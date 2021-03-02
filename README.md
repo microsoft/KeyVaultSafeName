@@ -1,14 +1,37 @@
-# Project
+# KeyVaultSafeName
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
+Azure KeyVault exposes assets as URI, so all `-VaultName` and `-Name` parameter values must be in the character set `[A-Za-z0-9-]` so they can be interpolated into the resulting URI values.
 
-As the maintainer of this project, please make a few updates:
+KeyVaultSafeName encodes/decodes 7-bit printable characters outside the above character set into strings such as `-64-` for `@` and vice versa using the ASCII table decimal value.
 
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+## Usage
+Assuming you've already imported the PSModule, usage is as follows:
+
+### Encoding
+
+```Powershell
+$uri = 'https://github.com/microsoft/KeyVaultSafeName'
+$safe = ConvertTo-KeyVaultSafeName $uri
+```
+
+`$safe` will contain the following string:
+
+```text
+https-58--47--47-github-46-com-47-microsoft-47-KeyVaultSafeName
+```
+
+### Decoding
+
+```PowerShell
+$encoded = 'https-58--47--47-github-46-com-47-microsoft-47-KeyVaultSafeName'
+$original = ConvertFrom-KeyVaultSafeName $encoded
+```
+
+`$original` will have the same value as `$uri`:
+
+```text
+https://github.com/microsoft/KeyVaultSafeName
+```
 
 ## Contributing
 
