@@ -5,7 +5,16 @@ Azure KeyVault exposes assets as URI, so all `-VaultName` and `-Name` parameter 
 KeyVaultSafeName encodes/decodes 7-bit printable characters outside the above character set into strings such as `-64-` for `@` and vice versa using the ASCII table decimal value.
 
 ## Usage
-Assuming you've already imported the PSModule, usage is as follows:
+
+### Importing
+
+```PowerShell
+# If downloaded to $home\KeyVaultSafeName
+ipmo ~\KeyVaultSafeName
+
+# If installed to folder in $env:PSModulePath
+ipmo KeyVaultSafeName
+```
 
 ### Encoding
 
@@ -46,6 +55,16 @@ provided by the bot. You will only need to do this once across all repos using o
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
 contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+
+### Need Help
+
+1. Code Review: Security. Style. Linting. Security.
+
+1. Documentation: Readability. Conformance to ecosystem standards. Wiki.
+
+1. Code Optimization: Besides the base PSH, also the specific class types such as `[RegEx]` and `[ScriptBlock]`
+
+1. Design: `SupportsShouldProcess`/`.ShouldContinue`? `ValueFromPipeline`? Changing `-Name <string>` to `-InputObject <Object>`?
 
 ## Trademarks
 
